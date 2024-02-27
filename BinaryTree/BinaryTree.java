@@ -28,6 +28,7 @@ public class BinaryTree {
 
         // return the node
         return root;
+
     }
 
     // In order traversal
@@ -82,4 +83,26 @@ public class BinaryTree {
         System.out.print(" ");
 
     }
+
+    // Return the depth of a node ( number of edges from root to the wanted node )
+    public int nodeDepth(Node root, int data) {
+
+        int distance = -1;
+
+        // If tree is empty return -1
+        if(root == null)
+            return distance;
+
+        // If current node is the node we want return distance + 1
+        // else recur on left node
+        if((root.getData() == data) ||
+                (distance = nodeDepth(root.getLeftNode(), data)) >= 0 ||
+                (distance = nodeDepth(root.getRigtNode(), data)) >= 0)
+            return distance +1 ;
+
+
+        // If node not found return -1
+        return distance;
+    }
+
 }
